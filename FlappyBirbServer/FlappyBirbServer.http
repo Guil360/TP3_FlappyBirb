@@ -1,0 +1,6 @@
+@FlappyBirbServer_HostAddress = http://localhost:5096
+
+GET {{FlappyBirbServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
