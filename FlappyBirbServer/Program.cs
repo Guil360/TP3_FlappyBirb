@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using FlappyBirbServer.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<FlappyBirbServerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FlappyBirbServerContext") ?? throw new InvalidOperationException("Connection string 'FlappyBirbServerContext' not found.")));
 
 // Add services to the container.
 
