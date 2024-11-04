@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\data\\flappybirbservercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:data\\flappybirbservercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\flappybirbserver.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:flappybirbserver.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\models\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:models\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|c:\\users\\2264914\\desktop\\tp3_flappybirb\\flappybirbserver\\flappybirbserver.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{73EF8CE8-567B-4C41-8837-D76B5ABF104F}|FlappyBirbServer.csproj|solutionrelative:flappybirbserver.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +38,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T19:39:05.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FlappyBirbServerContext.cs",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Data\\FlappyBirbServerContext.cs",
               "RelativeDocumentMoniker": "Data\\FlappyBirbServerContext.cs",
               "ToolTip": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Data\\FlappyBirbServerContext.cs",
               "RelativeToolTip": "Data\\FlappyBirbServerContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABRAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T19:27:35.022Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "FlappyBirbServer.http",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\FlappyBirbServer.http",
               "RelativeDocumentMoniker": "FlappyBirbServer.http",
@@ -64,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ScoresController.cs",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Controllers\\ScoresController.cs",
               "RelativeDocumentMoniker": "Controllers\\ScoresController.cs",
@@ -77,46 +94,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Controllers\\UsersController.cs",
               "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAABGAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAIwBcAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T19:15:01.417Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Score.cs",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Models\\Score.cs",
               "RelativeDocumentMoniker": "Models\\Score.cs",
               "ToolTip": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Models\\Score.cs",
               "RelativeToolTip": "Models\\Score.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T18:59:49.183Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
               "ToolTip": "C:\\Users\\2264914\\Desktop\\TP3_FlappyBirb\\FlappyBirbServer\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T18:59:38.644Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }

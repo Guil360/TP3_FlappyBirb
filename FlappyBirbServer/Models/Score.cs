@@ -6,7 +6,7 @@
 
         public int Amount { get; set; }
 
-        public User ScoreOwner { get; set; } = null!; 
+        public virtual User ScoreOwner { get; set; }
 
         public bool Visible { get; set; }
 
