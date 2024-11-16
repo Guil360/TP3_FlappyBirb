@@ -2,49 +2,51 @@
 using FlappyBirbServer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Linq;
 
 [Route("api/[controller]")]
 [ApiController]
 public class UsersController : ControllerBase
 {
+    private readonly UserManager<User> _userManager;
     private readonly FlappyBirbServerContext _context;
 
-    public UsersController(FlappyBirbServerContext context)
+    public UsersController(FlappyBirbServerContext context, UserManager<User> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     // POST: api/Users/Register
     [HttpPost("Register")]
-    public async Task<ActionResult<User>> Register(User user)
+    public async Task<ActionResult> Register(RegisterDTO registerDTO)
     {
-        _context.User.Add(user);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction("GetUser", new { id = user.Id }, user);
-    }
-
-    // POST: api/Users/Login
-    [HttpPost("Login")]
-    public async Task<ActionResult<User>> Login(User user)
-    {
-        var existingUser = await _context.User.FirstOrDefaultAsync(u => u.Name == user.Name); 
-
-        if (existingUser == null)
+        if (registerDTO.Password != registerDTO.ConfirmPassword)
         {
-            return NotFound("User not found.");
+            return BadRequest("Les deux mots de passe spécifiés sont différents.");
         }
 
-        if (existingUser.Name != user.Name) 
+        User user = new User
         {
-            return Unauthorized();
+            UserName = registerDTO.Username,
+            Email = registerDTO.Email
+        };
+
+        IdentityResult identityResult = await _userManager.CreateAsync(user, registerDTO.Password);
+
+        if (!identityResult.Succeeded)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new
+                {
+                    Status = "Error",
+                    Message = "La création a échoué. Errors: " +
+                              string.Join(", ", identityResult.Errors.Select(e => e.Description))
+                });
         }
 
-        return Ok(existingUser);
-    }
-
-    private bool UserExists(int id)
-    {
-        return _context.User.Any(e => e.Id == id);
+        return Ok("L'utilisateur a été enregistré avec succès.");
     }
 }

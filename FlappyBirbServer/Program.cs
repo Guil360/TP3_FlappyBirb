@@ -1,12 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FlappyBirbServer.Data;
+using FlappyBirbServer.Models;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<FlappyBirbServerContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("FlappyBirbServerContext") ?? throw new InvalidOperationException("Connection string 'FlappyBirbServerContext' not found."));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FlappyBirbServerContext"));
     options.UseLazyLoadingProxies();
 });
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FlappyBirbServerContext>();
 
 // Add services to the container.
 
@@ -25,6 +30,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

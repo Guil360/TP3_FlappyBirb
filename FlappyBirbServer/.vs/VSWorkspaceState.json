@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models"
+    "\\Controllers",
+    "\\Data",
+    "\\Models",
+    "\\obj"
   ],
-  "SelectedNode": "\\FlappyBirbServer.sln",
+  "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
