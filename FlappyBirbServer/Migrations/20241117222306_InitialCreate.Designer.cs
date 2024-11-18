@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlappyBirbServer.Migrations
 {
     [DbContext(typeof(FlappyBirbServerContext))]
-    [Migration("20241115224736_InitialCreate")]
+    [Migration("20241117222306_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

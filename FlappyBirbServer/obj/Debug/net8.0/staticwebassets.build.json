@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "XOjgupnRYDFl1qiiraxdctml3KDULarHI0BqtsWrk/0=",
+  "Hash": "w0WUGIHqI7uIverSvbyL5gyeIvvezETuoUFpcU35ccQ=",
   "Source": "FlappyBirbServer",
   "BasePath": "_content/FlappyBirbServer",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

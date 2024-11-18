@@ -23,6 +23,8 @@ public class UsersController : ControllerBase
     [HttpPost("Register")]
     public async Task<ActionResult> Register(RegisterDTO registerDTO)
     {
+
+
         if (registerDTO.Password != registerDTO.ConfirmPassword)
         {
             return BadRequest("Les deux mots de passe spécifiés sont différents.");

@@ -4,17 +4,19 @@ namespace FlappyBirbServer.Models
 {
     public class RegisterDTO
     {
-        [Required]
+        [Required(ErrorMessage = "Le nom d'utilisateur est requis.")]
         public string Username { get; set; } = null!;
 
-        [Required]
+        [Required(ErrorMessage = "Le mot de passe est requis.")]
+        [MinLength(6, ErrorMessage = "Le mot de passe doit contenir au moins 6 caractères.")]
         public string Password { get; set; } = null!;
 
-        [Required]
+        [Required(ErrorMessage = "La confirmation du mot de passe est requise.")]
+        [Compare("Password", ErrorMessage = "Les mots de passe ne correspondent pas.")]
         public string ConfirmPassword { get; set; } = null!;
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "L'adresse email est requise.")]
+        [EmailAddress(ErrorMessage = "Veuillez fournir une addresse email valide.")]
         public string Email { get; set; } = null!;
     }
 }
