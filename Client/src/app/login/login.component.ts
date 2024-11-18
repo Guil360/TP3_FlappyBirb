@@ -27,48 +27,65 @@ export class LoginComponent {
 
   constructor(public route : Router, private log: LoginService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  async login(){
-
-
+  // Login method
+  async login() {
     let loginDTO = new LoginDTO(this.loginUsername, this.loginPassword);
+
     try {
+      // Send login request
       let response = await lastValueFrom(this.log.login(loginDTO));
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("username", response.username);
+      // Store token and user information in localStorage
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('username', response.username);
+      localStorage.setItem('userId', response.userId); // Store userId
+      // Navigate to the game page
+      this.route.navigate(['/play']);
     } catch (error) {
       console.error(error);
+      alert('Erreur de connexion.');
     }
-    //Sinon, on redirige vers la page de jeu
-    this.route.navigate(["/play"]);
   }
 
-  async register(){
-    //On vérifie que les deux mots de passe sont identiques
-    if(this.registerPassword != this.registerPasswordConfirm){
-      alert("Les mots de passe ne correspondent pas");
+  // Register method
+  async register() {
+    // Check if passwords match
+    if (this.registerPassword !== this.registerPasswordConfirm) {
+      alert('Les mots de passe ne correspondent pas');
       return;
     }
-    //On crée un objet RegisterDTO
+
+    // Create registration DTO object
     let registerDTO = {
       username: this.registerUsername,
-      email: this.registerPassword,
+      email: this.registerEmail,
       password: this.registerPassword,
-      passwordConfirm: this.registerPasswordConfirm
-
+      confirmPassword: this.registerPasswordConfirm
     };
 
-    //La requete maintenant
     try {
+      // Send registration request
       let response = await lastValueFrom(this.log.register(registerDTO));
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("username", response.username);
-    } catch (error) {
-      console.error(error);
-    }
-
-  }
+      // Store token and user information in localStorage
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('username', response.username);
+      localStorage.setItem('userId', response.userId); // Store userId
+      alert('Inscription réussie !');
+      // Navigate to the game page
+      this.route.navigate(['/play']);
+    } catch (error: any) {
+      if (error.error?.errors) {
+        let errors = Object.values(error.error.errors).flat();
+        alert('Erreurs : \n' + errors.join('\n'));
+      } else {
+        console.error(error);
+        alert("Erreur lors de l'inscription.");
+      }
   
+
+   
+  
+}
+}
 }

@@ -78,9 +78,9 @@ public class UsersController : ControllerBase
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Une phrase longue et plate que personne ne vas jamais lire"));
             JwtSecurityToken token = new JwtSecurityToken(
-                issuer: "http://localhost:7291",
+                issuer: "http://localhost:7059",
                 audience: "http://localhost:4200",
                 claims: claims,
                 expires: DateTime.Now.AddHours(1),

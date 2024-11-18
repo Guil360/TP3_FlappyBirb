@@ -8,35 +8,27 @@ namespace FlappyBirbServer.Models
         public int Id { get; set; }
 
         // Pour le pseudo
-        public string? Username { get; set; }
+        public string? Pseudo { get; set; }
+
+        // Date du score
+        [Required(ErrorMessage = "Date requise")]
+        [DataType(DataType.Date)]
+        public string? Date { get; set; }
 
         // This would be the amount in seconds
         [Required(ErrorMessage = "Nombre de temps requis")]
-        public int Amount { get; set; }
+        public string TimeInSeconds { get; set; }
+
+        // Valeur du score
+        [Required(ErrorMessage = "Valeur du score requise")]
+        public int ScoreValue { get; set; }
+
+        [Required(ErrorMessage = "Visibilité requise")]
+        public bool IsPublic { get; set; }
 
         [JsonIgnore]
         public virtual User? ScoreOwner { get; set; }
 
-        [Required(ErrorMessage = "Visibilité requise")]
-        public bool Visible { get; set; }
-
-        public int UserId { get; set; }
-
-        // Date du score
-        [Required(ErrorMessage = "Date requise")]
-        public DateTime Date { get; set; }
-
-        public Score(int id, int amount, User scoreOwner, bool visible, string username, int userId, DateTime date)
-        {
-            Id = id;
-            Amount = amount;
-            ScoreOwner = scoreOwner ?? throw new ArgumentNullException(nameof(scoreOwner), "ScoreOwner cannot be null.");
-            Visible = visible;
-            Username = username;
-            UserId = userId;
-            Date = date;
-        }
-
-        public Score() { }
+        public string? UserId { get; set; }
     }
 }

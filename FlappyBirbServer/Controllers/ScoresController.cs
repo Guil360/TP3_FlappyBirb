@@ -7,80 +7,76 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FlappyBirbServer.Data;
 using FlappyBirbServer.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using FlappyBirbServer.Services;
 
 namespace FlappyBirbServer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ScoresController : ControllerBase
     {
-        //private readonly FlappyBirbServerContext _context;
+        private readonly FlappyBirbServerContext _context;
+        private readonly ScoreService _scoreService;
 
-        //public ScoresController(FlappyBirbServerContext context)
-        //{
-        //    _context = context;
-        //}
+        public ScoresController(FlappyBirbServerContext context, ScoreService scoreService)
+        {
+            _context = context;
+            _scoreService = scoreService;
+        }
 
-        //// GET: api/Scores/GetPublicScores
-        //[HttpGet("GetPublicScores")] 
-        //public async Task<ActionResult<IEnumerable<Score>>> GetPublicScores()
-        //{
-        //    return await _context.Score.Where(s => s.Visible).ToListAsync(); // Example for public scores
-        //}
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Score>>> GetPublicScores()
+        {
+            var scores = await _context.Score
+                .Where(s => s.IsPublic)
+                .OrderByDescending(a => a.ScoreValue)
+                .Select(s => new {
+                    s.Pseudo,
+                    s.ScoreValue,
+                    ScoreInSeconds = s.TimeInSeconds,
+                    s.Date
+                })
+                .ToListAsync();
 
-        //// GET: api/Scores/GetMyScores
-        //[HttpGet("GetMyScores")] 
-        //public async Task<ActionResult<IEnumerable<Score>>> GetMyScores()
-        //{
-            
-        //    var userId = 1; //Valeur hardcodée
-        //    return await _context.Score.Where(s => s.ScoreOwner.Id == userId).ToListAsync(); 
-        //}
-
-        //// PUT: api/Scores/ChangeScoreVisibility/{id}
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> ChangeScoreVisibility(int id, Score score)
-        //{
-        //    if (id != score.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(score).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ScoreExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/Scores/PostScore
-        //[HttpPost]
-        //public async Task<ActionResult<Score>> PostScore(Score score)
-        //{
-        //    _context.Score.Add(score);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetScore", new { id = score.Id }, score);
-        //}
+            return Ok(scores);
+        }
 
 
-        //private bool ScoreExists(int id)
-        //{
-        //    return _context.Score.Any(e => e.Id == id);
-        //}
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Score>>> GetMyScores()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var scores = await _context.Score.Where(s => s.UserId == userId).OrderByDescending(a => a.ScoreValue).ToListAsync();
+            return Ok(scores);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Score>> ChangeScoreVisibility(int id, [FromBody] bool Visible)
+        {
+            var score = await _scoreService.ChangeScoreVisibility(id, Visible);
+            if (!score)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<Score>> PostScore([FromBody] Score score)
+        {
+            score.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            score.Date = DateTime.Now.ToString("yyyy-MM-dd");
+            var newScore = await _scoreService.AddNewScore(score);
+            if (newScore == null)
+            {
+                return BadRequest("Impossible d'ajouter le score");
+            }
+            score.ScoreOwner = await _context.Users.FindAsync(score.UserId);
+            return CreatedAtAction(nameof(GetMyScores), new { id = newScore.Id }, newScore);
+        }
     }
 }

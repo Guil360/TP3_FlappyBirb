@@ -16,7 +16,7 @@ namespace FlappyBirbServer.Models
         public string ConfirmPassword { get; set; } = null!;
 
         [Required(ErrorMessage = "L'adresse email est requise.")]
-        [EmailAddress(ErrorMessage = "Veuillez fournir une addresse email valide.")]
+        [EmailAddress(ErrorMessage = "Veuillez fournir une adresse email valide.")]
         public string Email { get; set; } = null!;
     }
 }

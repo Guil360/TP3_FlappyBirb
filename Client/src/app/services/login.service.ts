@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginDTO } from '../models/dto';
 
-const domaineServeur = "https://localhost:7291/";
+const domaineServeur = "https://localhost:7059/";
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +16,11 @@ export class LoginService {
     }
 
     register(registerDTO: any): Observable<any> {
-        return this.http.post(`${domaineServeur}api/Users/Register`, registerDTO);
-    }
+        return this.http.post(`${domaineServeur}api/Users/Register`, registerDTO, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        });
+      }
+      
 }

@@ -33,20 +33,123 @@ namespace FlappyBirbServer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Pseudo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScoreValue")
                         .HasColumnType("int");
 
-                    b.Property<string>("ScoreOwnerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("TimeInSeconds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Visible")
-                        .HasColumnType("bit");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScoreOwnerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Score");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = "2024-11-18",
+                            IsPublic = false,
+                            Pseudo = "admin",
+                            ScoreValue = 100,
+                            TimeInSeconds = "10",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = "2024-11-18",
+                            IsPublic = true,
+                            Pseudo = "user",
+                            ScoreValue = 200,
+                            TimeInSeconds = "20",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Date = "2024-11-18",
+                            IsPublic = true,
+                            Pseudo = "player1",
+                            ScoreValue = 150,
+                            TimeInSeconds = "15",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Date = "2024-11-18",
+                            IsPublic = false,
+                            Pseudo = "player2",
+                            ScoreValue = 250,
+                            TimeInSeconds = "25",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Date = "2024-11-18",
+                            IsPublic = true,
+                            Pseudo = "player3",
+                            ScoreValue = 300,
+                            TimeInSeconds = "30",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Date = "2024-11-18",
+                            IsPublic = false,
+                            Pseudo = "player4",
+                            ScoreValue = 350,
+                            TimeInSeconds = "35",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Date = "2024-11-18",
+                            IsPublic = true,
+                            Pseudo = "player5",
+                            ScoreValue = 400,
+                            TimeInSeconds = "40",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Date = "2024-11-18",
+                            IsPublic = false,
+                            Pseudo = "player6",
+                            ScoreValue = 450,
+                            TimeInSeconds = "45",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Date = "2024-11-18",
+                            IsPublic = true,
+                            Pseudo = "player7",
+                            ScoreValue = 500,
+                            TimeInSeconds = "50",
+                            UserId = "1"
+                        });
                 });
 
             modelBuilder.Entity("FlappyBirbServer.Models.User", b =>
@@ -73,10 +176,6 @@ namespace FlappyBirbServer.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -116,6 +215,40 @@ namespace FlappyBirbServer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e1d89785-ccad-404b-b96a-6722f3b1a4a0",
+                            Email = "user1@email.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER1@EMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFy0O3EXFgpDVxRWicv7cBwjYDspac9mnYuL5FTH+d5GF5QJBfWc8VenwjNBACZiUg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1c5b8a83-b56d-411a-ae51-8749c0075657",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a7fd6ebd-58b2-412a-bb25-b1fdd6781056",
+                            Email = "user2@email.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER2@EMAIL.COM",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMbDO8Sz/g0vm0XGcL4oLc9CD683IBsGbB/EGdLu6oFwFdgsuSQ+MDvbkIANZBze0w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9a4a6a41-a1fd-453f-960b-5e5d0c5b4d7e",
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -255,7 +388,7 @@ namespace FlappyBirbServer.Migrations
                 {
                     b.HasOne("FlappyBirbServer.Models.User", "ScoreOwner")
                         .WithMany("Scores")
-                        .HasForeignKey("ScoreOwnerId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("ScoreOwner");
                 });

@@ -17,7 +17,6 @@ namespace FlappyBirbServer.Data
         }
 
         public DbSet<FlappyBirbServer.Models.User> User { get; set; } = default!;
-        public DbSet<FlappyBirbServer.Models.Score> Score { get; set; } = default!;
 
 
         //Creation du seed
@@ -51,128 +50,114 @@ namespace FlappyBirbServer.Data
 
             modelBuilder.Entity<User>().HasData(user, user2);
 
-            //On ajoute les scores
-
+            // Seed scores
             modelBuilder.Entity<Score>().HasData(
                 new Score
                 {
                     Id = 1,
-                    Amount = 10,
-                    ScoreOwner = user,
-                    Visible = false,
-                    Username = "admin",
-                    Date = DateTime.Now
+                    ScoreValue = 100,
+                    IsPublic = false,
+                    Pseudo = "admin",
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    TimeInSeconds = "10",
+                    UserId = user.Id
                 },
+
                 new Score
                 {
                     Id = 2,
-                    Amount = 20,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
+                    ScoreValue = 200,
+                    IsPublic = true,
+                    Pseudo = "user",
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    TimeInSeconds = "20",
+                    UserId = user2.Id
                 },
-                //Score privé
-                new Score
-                {
-                    Id = 3,
-                    Amount = 30,
-                    ScoreOwner = user,
-                    Visible = false,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 4,
-                    Amount = 40,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 5,
-                    Amount = 50,
-                    ScoreOwner = user,
-                    Visible = false,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 6,
-                    Amount = 60,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 7,
-                    Amount = 70,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 8,
-                    Amount = 80,
-                    ScoreOwner = user,
-                    Visible = false,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 9,
-                    Amount = 90,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 10,
-                    Amount = 100,
-                    ScoreOwner = user,
-                    Visible = true,
-                    Username = "admin",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 11,
-                    Amount = 10,
-                    ScoreOwner = user2,
-                    Visible = true,
-                    Username = "user",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 12,
-                    Amount = 20,
-                    ScoreOwner = user2,
-                    Visible = false,
-                    Username = "user",
-                    Date = DateTime.Now
-                },
-                new Score
-                {
-                    Id = 13,
-                    Amount = 30,
-                    ScoreOwner = user2,
-                    Visible = true,
-                    Username = "user",
-                    Date = DateTime.Now
-                }
+                    new Score
+                    {
+                        Id = 3,
+                        ScoreValue = 150,
+                        IsPublic = true,
+                        Pseudo = "player1",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "15",
+                        UserId = user.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 4,
+                        ScoreValue = 250,
+                        IsPublic = false,
+                        Pseudo = "player2",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "25",
+                        UserId = user2.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 5,
+                        ScoreValue = 300,
+                        IsPublic = true,
+                        Pseudo = "player3",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "30",
+                        UserId = user.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 6,
+                        ScoreValue = 350,
+                        IsPublic = false,
+                        Pseudo = "player4",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "35",
+                        UserId = user2.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 7,
+                        ScoreValue = 400,
+                        IsPublic = true,
+                        Pseudo = "player5",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "40",
+                        UserId = user.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 8,
+                        ScoreValue = 450,
+                        IsPublic = false,
+                        Pseudo = "player6",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "45",
+                        UserId = user2.Id
+                    },
+
+                    new Score
+                    {
+                        Id = 9,
+                        ScoreValue = 500,
+                        IsPublic = true,
+                        Pseudo = "player7",
+                        Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                        TimeInSeconds = "50",
+                        UserId = user.Id
+                    }
+
+
+
+
+
             );
         }
+
+        
+        public DbSet<FlappyBirbServer.Models.Score> Score { get; set; } = default!;
     }
 }

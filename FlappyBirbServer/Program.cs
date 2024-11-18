@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FlappyBirbServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<FlappyBirbServerContext>(options =>
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<FlappyBirbServerContext>(options =>
 });
 
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FlappyBirbServerContext>();
+
+builder.Services.AddScoped<ScoreService>();
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -41,7 +44,7 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateAudience = true,
-        ValidIssuer = "http://localhost:7182",
+        ValidIssuer = "http://localhost:7059",
         ValidAudience = "http://localhost:4200",
         ValidateIssuer = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Une phrase longue et plate que personne ne vas jamais lire"))
