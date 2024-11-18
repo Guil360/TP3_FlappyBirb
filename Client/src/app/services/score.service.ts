@@ -25,8 +25,8 @@ export class ScoreService {
 
     toggleVisibility(scoreId: number, token: string, Visible: boolean): Observable<void> {
         return this.http.put<void>(
-            `${domaineServeur}api/Scores/ToggleVisibility`, 
-            { scoreId, Visible }, 
+            `${domaineServeur}api/Scores/ChangeScoreVisibility`, 
+            { scoreId, visible: Visible }, 
             { 
                 headers: new HttpHeaders()
                     .set("Authorization", `Bearer ${token}`)

@@ -2,33 +2,18 @@
   {
     "ContainingType": "FlappyBirbServer.Controllers.ScoresController",
     "Method": "ChangeScoreVisibility",
-    "RelativePath": "api/Scores/ChangeScoreVisibility/{id}",
+    "RelativePath": "api/Scores/ChangeScoreVisibility",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "Visible",
-        "Type": "System.Boolean",
+        "Name": "request",
+        "Type": "Newtonsoft.Json.Linq.JObject",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "FlappyBirbServer.Models.Score",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FlappyBirbServer.Controllers.ScoresController",

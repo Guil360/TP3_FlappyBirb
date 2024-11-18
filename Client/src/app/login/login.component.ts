@@ -29,18 +29,14 @@ export class LoginComponent {
 
   ngOnInit() {}
 
-  // Login method
   async login() {
     let loginDTO = new LoginDTO(this.loginUsername, this.loginPassword);
 
     try {
-      // Send login request
       let response = await lastValueFrom(this.log.login(loginDTO));
-      // Store token and user information in localStorage
       localStorage.setItem('token', response.token);
       localStorage.setItem('username', response.username);
-      localStorage.setItem('userId', response.userId); // Store userId
-      // Navigate to the game page
+      localStorage.setItem('userId', response.userId);
       this.route.navigate(['/play']);
     } catch (error) {
       console.error(error);
@@ -48,15 +44,12 @@ export class LoginComponent {
     }
   }
 
-  // Register method
   async register() {
-    // Check if passwords match
     if (this.registerPassword !== this.registerPasswordConfirm) {
       alert('Les mots de passe ne correspondent pas');
       return;
     }
 
-    // Create registration DTO object
     let registerDTO = {
       username: this.registerUsername,
       email: this.registerEmail,
@@ -65,15 +58,8 @@ export class LoginComponent {
     };
 
     try {
-      // Send registration request
-      let response = await lastValueFrom(this.log.register(registerDTO));
-      // Store token and user information in localStorage
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('username', response.username);
-      localStorage.setItem('userId', response.userId); // Store userId
+      await lastValueFrom(this.log.register(registerDTO));
       alert('Inscription réussie !');
-      // Navigate to the game page
-      this.route.navigate(['/play']);
     } catch (error: any) {
       if (error.error?.errors) {
         let errors = Object.values(error.error.errors).flat();
@@ -82,10 +68,6 @@ export class LoginComponent {
         console.error(error);
         alert("Erreur lors de l'inscription.");
       }
-  
-
-   
-  
-}
-}
+    }
+  }
 }

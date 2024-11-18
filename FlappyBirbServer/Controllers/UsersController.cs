@@ -27,11 +27,9 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Register(RegisterDTO registerDTO)
     {
-
-
         if (registerDTO.Password != registerDTO.ConfirmPassword)
         {
-            return BadRequest("Les deux mots de passe spécifiés sont différents.");
+            return BadRequest(new { message = "Les deux mots de passe spécifiés sont différents." });
         }
 
         User user = new User
@@ -53,7 +51,7 @@ public class UsersController : ControllerBase
                 });
         }
 
-        return Ok("L'utilisateur a été enregistré avec succès.");
+        return Ok(new { message = "L'utilisateur a été enregistré avec succès." });
     }
 
     // POST: api/Users/Login
@@ -63,17 +61,17 @@ public class UsersController : ControllerBase
         User user = await _userManager.FindByNameAsync(loginDTO.Username);
         if (user == null)
         {
-            return BadRequest("L'utilisateur n'existe pas.");
+            return BadRequest(new { message = "L'utilisateur n'existe pas." });
         }
         if (!await _userManager.CheckPasswordAsync(user, loginDTO.Password))
         {
-            return BadRequest("Le mot de passe est incorrect.");
+            return BadRequest(new { message = "Le mot de passe est incorrect." });
         }
         else if (user != null && await _userManager.CheckPasswordAsync(user, loginDTO.Password))
         {
             IList<string> roles = await _userManager.GetRolesAsync(user);
             List<Claim> claims = new List<Claim>();
-            foreach (var role in roles) 
+            foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
@@ -91,14 +89,10 @@ public class UsersController : ControllerBase
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = token.ValidTo
             });
-            
-
-
         }
         else
         {
-            return BadRequest("Une erreur s'est produite.");
+            return BadRequest(new { message = "Une erreur s'est produite." });
         }
-
     }
 }

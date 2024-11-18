@@ -81,61 +81,42 @@
         }
       }
     },
-    "/api/Scores/ChangeScoreVisibility/{id}": {
+    "/api/Scores/ChangeScoreVisibility": {
       "put": {
         "tags": [
           "Scores"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "boolean"
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
               }
             },
             "text/json": {
               "schema": {
-                "type": "boolean"
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "boolean"
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/JToken"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Score"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Score"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Score"
-                }
-              }
-            }
+            "description": "Success"
           }
         }
       }
@@ -253,6 +234,12 @@
   },
   "components": {
     "schemas": {
+      "JToken": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/JToken"
+        }
+      },
       "LoginDTO": {
         "required": [
           "password",

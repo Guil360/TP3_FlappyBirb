@@ -10,6 +10,7 @@ using FlappyBirbServer.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using FlappyBirbServer.Services;
+using Newtonsoft.Json.Linq;
 
 namespace FlappyBirbServer.Controllers
 {
@@ -32,7 +33,8 @@ namespace FlappyBirbServer.Controllers
             var scores = await _context.Score
                 .Where(s => s.IsPublic)
                 .OrderByDescending(a => a.ScoreValue)
-                .Select(s => new {
+                .Select(s => new
+                {
                     s.Pseudo,
                     s.ScoreValue,
                     ScoreInSeconds = s.TimeInSeconds,
@@ -43,7 +45,6 @@ namespace FlappyBirbServer.Controllers
             return Ok(scores);
         }
 
-
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Score>>> GetMyScores()
@@ -53,16 +54,28 @@ namespace FlappyBirbServer.Controllers
             return Ok(scores);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Score>> ChangeScoreVisibility(int id, [FromBody] bool Visible)
+        [HttpPut]
+        public async Task<ActionResult> ChangeScoreVisibility([FromBody] JObject request)
         {
-            var score = await _scoreService.ChangeScoreVisibility(id, Visible);
+            // Extract properties from the JObject
+            var scoreId = request["scoreId"]?.ToObject<int>();
+            var visible = request["visible"]?.ToObject<bool>();
+
+            if (scoreId == null || visible == null)
+            {
+                return BadRequest("Invalid request data.");
+            }
+
+            var score = await _scoreService.ChangeScoreVisibility(scoreId.Value, visible.Value);
+
             if (!score)
             {
                 return NotFound();
             }
+
             return Ok();
         }
+
 
         [HttpPost]
         [Authorize]
@@ -71,10 +84,12 @@ namespace FlappyBirbServer.Controllers
             score.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             score.Date = DateTime.Now.ToString("yyyy-MM-dd");
             var newScore = await _scoreService.AddNewScore(score);
+
             if (newScore == null)
             {
                 return BadRequest("Impossible d'ajouter le score");
             }
+
             score.ScoreOwner = await _context.Users.FindAsync(score.UserId);
             return CreatedAtAction(nameof(GetMyScores), new { id = newScore.Id }, newScore);
         }

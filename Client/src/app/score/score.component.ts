@@ -72,7 +72,7 @@ export class ScoreComponent implements OnInit {
 
     score.isPublic = !score.isPublic;
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
     if (token) {
       this.scoreService.toggleVisibility(score.id, token, score.isPublic).subscribe({
@@ -83,14 +83,14 @@ export class ScoreComponent implements OnInit {
           console.error(error);
         }
       });
+      this.getMyScores(token);
     } else {
       console.error("No token found");
     }
-    this.getMyScores(token!);
   }
 
   getMyScores(token: string) {
-    const userId = this.getUserIdFromToken(token); // Get userId from the token
+    const userId = token ? this.getUserIdFromToken(token) : null; // Get userId from the token if it exists
   
     this.scoreService.getMyScores(token).subscribe({
       next: (response: any) => {
