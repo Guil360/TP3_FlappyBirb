@@ -3,9 +3,10 @@
     "",
     "\\Controllers",
     "\\Data",
+    "\\Migrations",
     "\\Models",
     "\\obj"
   ],
-  "SelectedNode": "\\Data\\FlappyBirbServerContext.cs",
+  "SelectedNode": "\\FlappyBirbServer.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -793,3 +793,5 @@ C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\obj\Debug\net8.0\refint\Fl
 C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\obj\Debug\net8.0\FlappyBirbServer.pdb
 C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\obj\Debug\net8.0\FlappyBirbServer.genruntimeconfig.cache
 C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\obj\Debug\net8.0\ref\FlappyBirbServer.dll
+C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Guil\Desktop\TP3_FlappyBirb\FlappyBirbServer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

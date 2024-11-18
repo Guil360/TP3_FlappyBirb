@@ -5,8 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class UsersController : ControllerBase
 {
@@ -20,7 +24,7 @@ public class UsersController : ControllerBase
     }
 
     // POST: api/Users/Register
-    [HttpPost("Register")]
+    [HttpPost]
     public async Task<ActionResult> Register(RegisterDTO registerDTO)
     {
 
@@ -50,5 +54,51 @@ public class UsersController : ControllerBase
         }
 
         return Ok("L'utilisateur a été enregistré avec succès.");
+    }
+
+    // POST: api/Users/Login
+    [HttpPost]
+    public async Task<ActionResult> Login(LoginDTO loginDTO)
+    {
+        User user = await _userManager.FindByNameAsync(loginDTO.Username);
+        if (user == null)
+        {
+            return BadRequest("L'utilisateur n'existe pas.");
+        }
+        if (!await _userManager.CheckPasswordAsync(user, loginDTO.Password))
+        {
+            return BadRequest("Le mot de passe est incorrect.");
+        }
+        else if (user != null && await _userManager.CheckPasswordAsync(user, loginDTO.Password))
+        {
+            IList<string> roles = await _userManager.GetRolesAsync(user);
+            List<Claim> claims = new List<Claim>();
+            foreach (var role in roles) 
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            JwtSecurityToken token = new JwtSecurityToken(
+                issuer: "http://localhost:7291",
+                audience: "http://localhost:4200",
+                claims: claims,
+                expires: DateTime.Now.AddHours(1),
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
+            );
+            return Ok(new
+            {
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo
+            });
+            
+
+
+        }
+        else
+        {
+            return BadRequest("Une erreur s'est produite.");
+        }
+
     }
 }

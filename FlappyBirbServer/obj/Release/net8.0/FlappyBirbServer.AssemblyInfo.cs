@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlappyBirbServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+583eb63342f1d56fda473eca0b3fab8eb4c47e19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7aced0f3d945231d708fa9bc7682abf8262e1e05")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlappyBirbServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlappyBirbServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

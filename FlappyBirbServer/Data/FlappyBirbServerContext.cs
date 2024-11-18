@@ -18,10 +18,10 @@ namespace FlappyBirbServer.Data
 
         public DbSet<FlappyBirbServer.Models.User> User { get; set; } = default!;
         public DbSet<FlappyBirbServer.Models.Score> Score { get; set; } = default!;
-            }
 
-            //Creation du seed
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        //Creation du seed
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -34,7 +34,6 @@ namespace FlappyBirbServer.Data
                 NormalizedUserName = "ADMIN",
                 Email = "user1@email.com",
                 NormalizedEmail = "USER1@EMAIL.COM",
-                NormalizedUsername = "ADMIN"
             };
 
             user.PasswordHash = passwordHasher.HashPassword(user, "admin");
@@ -46,7 +45,6 @@ namespace FlappyBirbServer.Data
                 NormalizedUserName = "USER",
                 Email = "user2@email.com",
                 NormalizedEmail = "USER2@EMAIL.COM",
-                NormalizedUsername = "USER"
             };
 
             user2.PasswordHash = passwordHasher.HashPassword(user2, "user");
@@ -177,3 +175,4 @@ namespace FlappyBirbServer.Data
             );
         }
     }
+}
